@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.b140414.njupt.checkins.Register"
+    android:background="@drawable/background_login">
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/signup"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sing Up"
+        android:id="@+id/textView2"
+        android:textSize="45dp"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="账号:"
+        android:id="@+id/textView_z"
+        android:layout_marginTop="36dp"
+        android:textSize="30dp"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="密码:"
+        android:id="@+id/textView_m"
+        android:textSize="30dp"
+        android:layout_below="@+id/textView_z"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="姓名:"
+        android:id="@+id/textView_x"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/textView_m"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:id="@+id/register_account_et"
+        android:background="@drawable/circle1"
+        android:layout_alignTop="@+id/textView_z"
+        android:layout_alignStart="@+id/textView2" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:id="@+id/register_password_et"
+        android:background="@drawable/circle1"
+        android:layout_alignBottom="@+id/textView_m"
+        android:layout_alignStart="@+id/register_account_et" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:id="@+id/realName_et"
+        android:background="@drawable/circle1"
+        android:layout_below="@+id/password_again_et"
+        android:layout_toEndOf="@+id/imageView3"
+        android:layout_marginTop="2dp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:text="确定"
+        android:id="@+id/button_queding"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/realName_et"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/circle1"
+        android:textSize="25dp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:id="@+id/button_tuichu"
+        android:text="退出"
+        android:background="@drawable/circle1"
+        android:layout_below="@+id/button_queding"
+        android:layout_alignStart="@+id/button_queding"
+        android:layout_marginTop="31dp"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="再输密码:"
+        android:id="@+id/textView3"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView_m"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:id="@+id/password_again_et"
+        android:background="@drawable/circle1"
+        android:layout_below="@+id/register_password_et"
+        android:layout_alignStart="@+id/register_password_et"
+        android:layout_marginTop="2dp" />
+</RelativeLayout>
