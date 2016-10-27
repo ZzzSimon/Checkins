@@ -26,6 +26,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 import bmob_table.Checkin_table;
+import bmob_table.Leave_table;
 import service.WifiCheck_ch;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
@@ -37,13 +38,17 @@ public class MainActivity extends AppCompatActivity {
     public static String IP;
     public static String MAC;
     private WifiCheck_ch.WifiCheckBinder wificheckbinder;
+    private Boolean hasChecked = false;
+    String account;
+    String realName;
+
 
     private ServiceConnection connection = new ServiceConnection() {
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             wificheckbinder = (WifiCheck_ch.WifiCheckBinder)service;
-            wificheckbinder.startCheck();
+
         }
 
         @Override
@@ -59,9 +64,14 @@ public class MainActivity extends AppCompatActivity {
         hello = (TextView) findViewById(R.id.hello);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String realName = bundle.getString("realName");
+        realName = bundle.getString("realName");
+        account = bundle.getString("account");
 
         hello.setText("你好，" + realName);
+        Intent bindIntent = new Intent(this,WifiCheck_ch.class);
+        bindIntent.putExtra("account",account);
+        bindIntent.putExtra("name",realName);
+        bindService(bindIntent,connection,BIND_AUTO_CREATE);
     }
 
     //检查连接的是什么网络
@@ -70,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo mNetworkInfo =  ConnectivityManager.getActiveNetworkInfo();
         if (mNetworkInfo.getState() == NetworkInfo.State.CONNECTED) {
             if (mNetworkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-                return 2;  //返回1，连接的是移动网络
+                return 1;  //返回1，连接的是移动网络
             } else if (mNetworkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
                 return 2;  //返回2，连接的是wifi**************
             }
@@ -112,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             MAC=getLocalMacAddress();
             IP=getLocalIpAddress();
             Date date=new Date();
-            SimpleDateFormat sdf=new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
             final String stime=sdf.format(date);
             Intent intent = getIntent();
             Bundle bundle = intent.getExtras();
@@ -125,19 +135,31 @@ public class MainActivity extends AppCompatActivity {
             qiandao.setDaoTime(stime);
             qiandao.setIP(IP);
             qiandao.setMAC(MAC);
-            qiandao.save(MainActivity.this, new SaveListener(){
-                @Override
-                public void onSuccess() {
-                    Toast.makeText(MainActivity.this, "签到成功！\n IP:"+IP+"\nMAC 地址:"+MAC+"\n时间："+ stime, Toast.LENGTH_LONG).show();
+            if(!hasChecked) {
+                qiandao.save(MainActivity.this, new SaveListener() {
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(MainActivity.this, "签到成功！\n IP:" + IP + "\nMAC 地址:" + MAC + "\n时间：" + stime, Toast.LENGTH_LONG).show();
 
-                }
-                @Override
-                public void onFailure(int code, String arg0) {
-                    Toast.makeText(MainActivity.this, "签到失败!", Toast.LENGTH_LONG).show();
-                }
-            });
-            Intent bindIntent = new Intent(this,WifiCheck_ch.class);
-            bindService(bindIntent,connection,BIND_AUTO_CREATE);
+                        wificheckbinder.startCheck();
+                        hasChecked = true;
+
+
+
+
+                    }
+
+                    @Override
+                    public void onFailure(int code, String arg0) {
+                        Toast.makeText(MainActivity.this, "签到失败!", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+            else {
+                Toast.makeText(MainActivity.this, "你已经签过到了!" + "\n重新登录再次可签到", Toast.LENGTH_LONG).show();
+            }
+
+
         }
     }
 
@@ -168,9 +190,66 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    public void call(View view){
+        BmobQuery<Checkin_table> query1 = new BmobQuery<>();
+        //获取当前时间
+        Date todaydate=new Date();
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        String s = format.format(todaydate);
+//当前时间与check_table表中的签到时间进行匹配
+        query1.addWhereEqualTo("DaoTime", s);
+
+        query1.findObjects(MainActivity.this, new FindListener<Checkin_table>() {
+            @Override
+            public void onSuccess(List<Checkin_table> qianDao) {
+
+                String str = "";
+                for (Checkin_table a : qianDao) {
+                    str += a.getRealName() + "\n\n";
+                }
+                String str1 = "查询成功：共" + qianDao.size() + "个人签到。";
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                Date todaydate = new Date();
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                String s = format.format(todaydate);
+                builder.setTitle(s + "的签到人员详情");
+                builder.setMessage(str + str1);
+                builder.create().show();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Toast.makeText(MainActivity.this, "查询失败！" + s, Toast.LENGTH_LONG);
+            }
+        });
+    }
+
     public void Quit(View view) {
+        if(hasChecked){
+            wificheckbinder.quit=true;
+            unbindService(connection);
+        }
+
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+        final String ltime=sdf.format(date);
+        Leave_table leave = new Leave_table();
+        leave.setAccount(account);
+        leave.setRealName(realName);
+        leave.setLeaveTime(ltime);
+        leave.save(MainActivity.this, new SaveListener(){
+            @Override
+            public void onSuccess() {
+                Toast.makeText(MainActivity.this, "离场信息已被记录！\n 姓名:"+realName+"\n账号:"+account+"\n时间："+ ltime, Toast.LENGTH_LONG).show();
+
+            }
+            @Override
+            public void onFailure(int code, String arg0) {
+                Toast.makeText(MainActivity.this, "离场信息记录失败!", Toast.LENGTH_LONG).show();
+            }
+        });
         finish();
-        unbindService(connection);
     }
 
 }

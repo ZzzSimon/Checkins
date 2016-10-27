@@ -9,18 +9,35 @@ import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Looper;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.b140414.njupt.checkins.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import bmob_table.Checkin_table;
+import bmob_table.Leave_table;
+import cn.bmob.v3.listener.DeleteListener;
+import cn.bmob.v3.listener.SaveListener;
+
 public class WifiCheck_ch extends Service {
-    private boolean quit = false;
+
     private WifiManager wifiM;
     private WifiCheckBinder wificheckbinder = new WifiCheckBinder();
     private static final int NOTIFICATION_FLAG = 1;
+    private String account;
+    private String name;
+    private Thread ck ;
+
+
 
     public class WifiCheckBinder extends Binder{
+        public boolean quit = false;
         public void startCheck(){
             Context context = getApplicationContext();
             final NotificationManager notificationManager = (NotificationManager) context
@@ -35,14 +52,14 @@ public class WifiCheck_ch extends Service {
                     .setContentText("Wifi连接已中断,请检查网络,请勿离场!")
                     .setContentIntent(contentIntent).setNumber(1).build();
             notify3.flags |= Notification.FLAG_AUTO_CANCEL; // FLAG_AUTO_CANCEL表明当通知被用户点击时，通知将被清除。
-            notificationManager.notify(NOTIFICATION_FLAG, notify3);// 步骤4：通过通知管理器来发起通知。如果id不同，则每click，在status哪里增加一个提示
-            new Thread() {
+
+             new Thread() {
                 @Override
                 public void run() {
                     Looper.prepare();
                     while (!quit) {
                         try {
-                            Thread.sleep(1000*60*1);    //每5分钟检查一次
+                            Thread.sleep(1000*10);    //每1分钟检查一次
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -53,19 +70,56 @@ public class WifiCheck_ch extends Service {
 
                         } else {
                             notificationManager.notify(1, notify3);
+                            Date date=new Date();
+                            SimpleDateFormat sdf=new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+                            final String ltime=sdf.format(date);
+                            Leave_table leave = new Leave_table();
+                            leave.setAccount(account);
+                            leave.setRealName(name);
+                            leave.setLeaveTime(ltime+"(中途离场)");
+                            leave.save(WifiCheck_ch.this, new SaveListener(){
+                                @Override
+                                public void onSuccess() {
+                                    Toast.makeText(WifiCheck_ch.this, "离场信息已被记录！\n 姓名:"+name+"\n账号:"+account+"\n时间："+ ltime, Toast.LENGTH_LONG).show();
+
+                                }
+                                @Override
+                                public void onFailure(int code, String arg0) {
+                                    Toast.makeText(WifiCheck_ch.this, "离场信息记录失败!", Toast.LENGTH_LONG).show();
+                                }
+                            });
                         }
                     }
                 }
             }.start();
+
+
         }
     }
+
 
 
 
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
+        Bundle bundle = (Bundle)intent.getExtras();
+        account=bundle.getString("account");
+        name = bundle.getString("name");
         return wificheckbinder;
+    }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+
+
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        return super.onStartCommand(intent, flags, startId);
     }
 }

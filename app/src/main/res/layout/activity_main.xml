@@ -69,4 +69,15 @@
         android:layout_above="@+id/button_qi"
         android:layout_alignStart="@+id/button_qi"
         android:textSize="25dp" />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="点名"
+        android:id="@+id/button_call"
+        android:layout_below="@+id/button_cha"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/circle"
+        android:textSize="27dp"
+        android:onClick="call" />
 </RelativeLayout>

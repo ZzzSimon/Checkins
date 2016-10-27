@@ -12,6 +12,7 @@ import java.util.List;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
+import service.WifiCheck_ch;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -58,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.setClass(LoginActivity.this,MainActivity.class);
                             intent.putExtra("account",account);
                             intent.putExtra("realName",a.getRealName());
+
                             startActivity(intent);
                         }
                     }
