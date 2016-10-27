@@ -1,4 +1,4 @@
-package Bmob_table;
+package bmob_table;
 
 import cn.bmob.v3.BmobObject;
 

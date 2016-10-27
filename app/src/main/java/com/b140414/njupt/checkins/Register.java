@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import Bmob_table.User;
+import bmob_table.User;
 
 import cn.bmob.v3.listener.SaveListener;
 

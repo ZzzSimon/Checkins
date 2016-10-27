@@ -31,9 +31,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="账号:"
+        android:text="手机号:"
         android:id="@+id/textView_z"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="43dp"
         android:textSize="30dp"
         android:layout_below="@+id/imageView3"
         android:layout_alignParentStart="true" />
@@ -46,7 +46,7 @@
         android:textSize="30dp"
         android:layout_below="@+id/textView_z"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,8 +54,7 @@
         android:text="姓名:"
         android:id="@+id/textView_x"
         android:textSize="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/textView_m"
+        android:layout_alignBottom="@+id/realName_et"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -63,16 +62,17 @@
         android:layout_height="40dp"
         android:id="@+id/register_account_et"
         android:background="@drawable/circle1"
-        android:layout_alignTop="@+id/textView_z"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_above="@+id/textView_m"
+        android:layout_alignEnd="@+id/button_queding" />
 
     <EditText
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:id="@+id/register_password_et"
         android:background="@drawable/circle1"
-        android:layout_alignBottom="@+id/textView_m"
-        android:layout_alignStart="@+id/register_account_et" />
+        android:layout_below="@+id/register_account_et"
+        android:layout_alignStart="@+id/register_account_et"
+        android:layout_marginTop="2dp" />
 
     <EditText
         android:layout_width="200dp"
@@ -80,19 +80,20 @@
         android:id="@+id/realName_et"
         android:background="@drawable/circle1"
         android:layout_below="@+id/password_again_et"
-        android:layout_toEndOf="@+id/imageView3"
+        android:layout_alignStart="@+id/password_again_et"
         android:layout_marginTop="2dp" />
 
     <Button
         android:layout_width="300dp"
         android:layout_height="45dp"
-        android:text="确定"
+        android:text="注册"
         android:id="@+id/button_queding"
         android:layout_marginTop="42dp"
         android:layout_below="@+id/realName_et"
         android:layout_centerHorizontal="true"
         android:background="@drawable/circle1"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:onClick="register_sure" />
 
     <Button
         android:layout_width="300dp"
@@ -103,14 +104,15 @@
         android:layout_below="@+id/button_queding"
         android:layout_alignStart="@+id/button_queding"
         android:layout_marginTop="31dp"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:onClick="register_quit_btn" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="再输密码:"
         android:id="@+id/textView3"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_below="@+id/textView_m"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp" />

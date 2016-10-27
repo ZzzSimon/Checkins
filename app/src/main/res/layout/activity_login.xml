@@ -18,7 +18,8 @@
         android:background="@drawable/circle"
         android:layout_below="@+id/relativeLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        android:onClick="login_btn" />
 
     <Button
         android:layout_width="50dp"
@@ -26,10 +27,11 @@
         android:text="注册"
         android:id="@+id/button_re"
         android:textSize="20dp"
-        android:textColor="@color/colorYellow"
+        android:textColor="@color/colorAccent"
         android:background="#00000000"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/relativeLayout" />
+        android:onClick="register_btn"
+        android:layout_alignTop="@+id/button"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="130dp"
@@ -74,7 +76,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/account_et"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:layout_marginTop="30dp"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/textView_zh" />
@@ -83,7 +85,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/password_et"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:layout_alignBottom="@+id/textView_mi"
             android:layout_toEndOf="@+id/textView_mi" />
     </RelativeLayout>
@@ -101,9 +103,20 @@
         android:layout_height="wrap_content"
         android:text="签到"
         android:id="@+id/textView"
+        android:textSize="30dp"
+        android:textColor="@color/colorBlack"
         android:layout_alignBottom="@+id/imageView"
         android:layout_toEndOf="@+id/imageView"
-        android:layout_marginBottom="31dp"
-        android:textSize="20dp"
-        android:textColor="@color/colorBlack"/>
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:id="@+id/button"
+        android:text="退出"
+        android:background="@drawable/circle1"
+        android:textSize="25dp"
+        android:onClick="quit_login_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/imageView2" />
 </RelativeLayout>
