@@ -8,76 +8,141 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.b140414.njupt.checkins.MainActivity"
-    android:background="@drawable/background_login">
+    android:background="@drawable/background">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="欢迎使用怼怼签到!"
+        android:text="欢迎使用"
         android:id="@+id/textView_title"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textSize="30dp" />
+        android:textSize="20dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark" />
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="签到"
-        android:id="@+id/button_qi"
-        android:background="@drawable/circle"
-        android:textSize="25dp"
-        android:layout_below="@+id/imageView4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
-        android:onClick="Dao" />
-
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="查看签到记录"
-        android:id="@+id/button_cha"
-        android:background="@drawable/circle"
-        android:textSize="25dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="Info_Dao" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
         android:text="退出"
         android:id="@+id/button_tui"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="71dp"
         android:background="@drawable/circle"
-        android:textSize="23dp"
-        android:onClick="Quit" />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageView4"
-        android:src="@drawable/snip1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:textSize="15dp"
+        android:onClick="Quit"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_marginBottom="47dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/hello"
-        android:layout_above="@+id/button_qi"
-        android:layout_alignStart="@+id/button_qi"
-        android:textSize="25dp" />
-    <Button
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="点名"
-        android:id="@+id/button_call"
-        android:layout_below="@+id/button_cha"
-        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_below="@+id/textView_title"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:id="@+id/relativeLayout3"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="135dp">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="离场信息"
+            android:id="@+id/button_li"
+            android:background="@drawable/circle"
+            android:textSize="15dp"
+            android:onClick="LiChang"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="点名"
+            android:id="@+id/button_call"
+            android:background="@drawable/circle"
+            android:textSize="15dp"
+            android:onClick="call"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_key"
+            android:background="@drawable/abc_textfield_search_material"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_below="@+id/textView6"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="签到口令"
+            android:id="@+id/textView6"
+            android:textSize="20dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView5"
+        android:src="@drawable/qiandao"
+        android:layout_marginLeft="-20dp"
+        android:layout_above="@+id/hello"
+        android:layout_toEndOf="@+id/textView_title" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:id="@+id/listView2"
+        android:layout_below="@+id/hello" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="刷新"
+        android:id="@+id/button2"
+        android:onClick="netScan_t"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:background="@drawable/circle"
-        android:textSize="27dp"
-        android:onClick="call" />
+        android:layout_below="@+id/listView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="请选择一个wifi"
+        android:id="@+id/textView_BSSID"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignEnd="@+id/listView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textView_SSID"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_above="@+id/textView_BSSID"
+        android:layout_toEndOf="@+id/relativeLayout3"
+        android:layout_marginStart="11dp" />
+
 </RelativeLayout>

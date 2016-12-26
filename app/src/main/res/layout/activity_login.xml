@@ -8,115 +8,154 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.b140414.njupt.checkins.LoginActivity"
-    android:background="@drawable/background_login">
+    android:background="@drawable/background">
     <Button
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="登录"
         android:id="@+id/button_login"
-        android:textSize="27dp"
-        android:background="@drawable/circle"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:onClick="login_btn" />
+        android:textSize="20dp"
+        android:onClick="login_btn"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:background="#00000000"
+        android:layout_above="@+id/button"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:text="注册"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/button_re"
-        android:textSize="20dp"
-        android:textColor="@color/colorAccent"
-        android:background="#00000000"
+        android:textSize="15dp"
+        android:background="@android:drawable/ic_menu_edit"
         android:onClick="register_btn"
         android:layout_alignTop="@+id/button"
         android:layout_alignParentStart="true" />
 
     <ImageView
-        android:layout_width="130dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/imageView"
+        android:src="@drawable/logo"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/logo"/>
+        android:layout_centerHorizontal="true" />
 
     <RelativeLayout
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:id="@+id/relativeLayout"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/circle">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="账号:"
-            android:id="@+id/textView_zh"
-            android:textSize="30dp"
-            android:textColor="@color/colorBlack"
-            android:layout_marginLeft="20dp"
-            android:layout_alignBottom="@+id/account_et"
-            android:layout_toStartOf="@+id/password_et" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="密码:"
-            android:id="@+id/textView_mi"
-            android:textSize="30dp"
-            android:textColor="@color/colorBlack"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="45dp"
-            android:layout_marginLeft="20dp" />
+        android:layout_marginTop="62dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true">
 
         <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
             android:id="@+id/account_et"
-            android:textColor="@color/colorBlack"
-            android:layout_marginTop="30dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:textSize="15dp"
+            android:background="@drawable/abc_textfield_search_material"
+            android:phoneNumber="true"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/textView_zh" />
+            android:layout_toEndOf="@+id/imageView2" />
 
         <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
             android:id="@+id/password_et"
-            android:textColor="@color/colorBlack"
-            android:layout_alignBottom="@+id/textView_mi"
-            android:layout_toEndOf="@+id/textView_mi" />
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:textSize="15dp"
+            android:background="@drawable/abc_textfield_search_material"
+            android:password="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="30dp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/imageView2"
+            android:background="@drawable/user"
+            android:layout_marginRight="5dp"
+            android:layout_alignBottom="@+id/account_et"
+            android:layout_alignStart="@+id/imageView4" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/imageView4"
+            android:layout_alignBottom="@+id/password_et"
+            android:layout_toStartOf="@+id/password_et"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/lock" />
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="130dp"
-        android:id="@+id/imageView2"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/duidui"/>
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/button"
+        android:background="@android:drawable/ic_delete"
+        android:textSize="15dp"
+        android:onClick="quit_login_btn"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_above="@+id/textView"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="签到"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="注册"
         android:id="@+id/textView"
-        android:textSize="30dp"
-        android:textColor="@color/colorBlack"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_marginBottom="20dp" />
-
-    <Button
-        android:layout_width="70dp"
-        android:layout_height="45dp"
-        android:id="@+id/button"
-        android:text="退出"
-        android:background="@drawable/circle1"
-        android:textSize="25dp"
-        android:onClick="quit_login_btn"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/imageView2" />
+        android:layout_alignParentStart="true"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="退出"
+        android:id="@+id/textView4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:id="@+id/imageView6"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/qiandao" />
+
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RadioGroup_type"
+        android:orientation="horizontal"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp">
+        <RadioButton
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="学生"
+            android:id="@+id/radioButton_s"
+            android:checked="true"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark" />
+
+        <RadioButton
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="老师"
+            android:id="@+id/radioButton_t"
+            android:checked="false"
+
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_marginTop="0dp" />
+    </RadioGroup>
+
 </RelativeLayout>

@@ -8,121 +8,163 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.b140414.njupt.checkins.Register"
-    android:background="@drawable/background_login">
+    android:background="@drawable/background">
 
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="70dp"
         android:id="@+id/imageView3"
+        android:src="@drawable/logo"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/signup"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sing Up"
-        android:id="@+id/textView2"
-        android:textSize="45dp"
-        android:layout_alignTop="@+id/imageView3"
-        android:layout_toEndOf="@+id/imageView3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="手机号:"
-        android:id="@+id/textView_z"
-        android:layout_marginTop="43dp"
-        android:textSize="30dp"
-        android:layout_below="@+id/imageView3"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="密码:"
-        android:id="@+id/textView_m"
-        android:textSize="30dp"
-        android:layout_below="@+id/textView_z"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="姓名:"
-        android:id="@+id/textView_x"
-        android:textSize="30dp"
-        android:layout_alignBottom="@+id/realName_et"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:id="@+id/register_account_et"
-        android:background="@drawable/circle1"
-        android:layout_above="@+id/textView_m"
-        android:layout_alignEnd="@+id/button_queding" />
-
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:id="@+id/register_password_et"
-        android:background="@drawable/circle1"
-        android:layout_below="@+id/register_account_et"
-        android:layout_alignStart="@+id/register_account_et"
-        android:layout_marginTop="2dp" />
-
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:id="@+id/realName_et"
-        android:background="@drawable/circle1"
-        android:layout_below="@+id/password_again_et"
-        android:layout_alignStart="@+id/password_again_et"
-        android:layout_marginTop="2dp" />
+        android:layout_toStartOf="@+id/imageView7" />
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:text="注册"
         android:id="@+id/button_queding"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/realName_et"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/circle1"
-        android:textSize="25dp"
-        android:onClick="register_sure" />
+        android:background="@drawable/abc_ab_share_pack_mtrl_alpha"
+        android:textSize="20dp"
+        android:onClick="register_sure"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginTop="20dp"
+        android:layout_alignEnd="@+id/relativeLayout2"
+        android:layout_alignStart="@+id/relativeLayout2" />
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/button_tuichu"
-        android:text="退出"
-        android:background="@drawable/circle1"
-        android:layout_below="@+id/button_queding"
-        android:layout_alignStart="@+id/button_queding"
-        android:layout_marginTop="31dp"
-        android:textSize="25dp"
-        android:onClick="register_quit_btn" />
+        android:background="@android:drawable/ic_menu_revert"
+        android:textSize="20dp"
+        android:onClick="register_quit_btn"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_above="@+id/textView_back"
+        android:layout_alignParentEnd="true" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:id="@+id/relativeLayout2"
+        android:layout_marginTop="63dp"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:id="@+id/register_account_et"
+            android:background="@drawable/abc_textfield_search_material"
+            android:phoneNumber="true"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView3"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:textSize="15dp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:id="@+id/register_password_et"
+            android:background="@drawable/abc_textfield_search_material"
+            android:password="true"
+            android:layout_marginLeft="0dp"
+            android:layout_below="@+id/register_account_et"
+            android:layout_alignStart="@+id/register_account_et"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:textSize="15dp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:id="@+id/password_again_et"
+            android:background="@drawable/abc_textfield_search_material"
+            android:password="true"
+            android:layout_marginLeft="0dp"
+            android:layout_below="@+id/register_password_et"
+            android:layout_alignStart="@+id/register_password_et"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:textSize="15dp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:id="@+id/realName_et"
+            android:background="@drawable/abc_textfield_search_material"
+            android:layout_marginLeft="0dp"
+            android:layout_below="@+id/password_again_et"
+            android:layout_alignStart="@+id/password_again_et"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="再输密码:"
+            android:id="@+id/textView3"
+            android:textSize="15dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_marginLeft="0dp"
+            android:layout_above="@+id/realName_et"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="姓名:"
+            android:id="@+id/textView_x"
+            android:textSize="15dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_marginLeft="0dp"
+            android:layout_alignBottom="@+id/realName_et"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密码:"
+            android:id="@+id/textView_m"
+            android:textSize="15dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_marginLeft="0dp"
+            android:layout_alignBottom="@+id/register_password_et"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号:"
+            android:id="@+id/textView_z"
+            android:textSize="15dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_dark"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_above="@+id/register_password_et"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="再输密码:"
-        android:id="@+id/textView3"
-        android:textSize="30dp"
-        android:layout_below="@+id/textView_m"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="返回"
+        android:id="@+id/textView_back"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_marginLeft="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/button_tuichu" />
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:id="@+id/password_again_et"
-        android:background="@drawable/circle1"
-        android:layout_below="@+id/register_password_et"
-        android:layout_alignStart="@+id/register_password_et"
-        android:layout_marginTop="2dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView7"
+        android:src="@drawable/signup"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_alignEnd="@+id/relativeLayout2" />
+
 </RelativeLayout>

@@ -9,6 +9,8 @@ public class Checkin_table extends BmobObject {
     private String realName;
     private String IP;
     private String MAC;
+    private String BSSID;
+    private String Key;
     private String DaoTime;
 
     public String getId() {
@@ -51,6 +53,14 @@ public class Checkin_table extends BmobObject {
         this.MAC = MAC;
     }
 
+    public String getBSSID() {
+        return BSSID;
+    }
+
+    public void setBSSID(String BSSID) {
+        this.BSSID = BSSID;
+    }
+
     public String getDaoTime() {
         return DaoTime;
     }
@@ -58,6 +68,16 @@ public class Checkin_table extends BmobObject {
     public void setDaoTime(String daoTime) {
         DaoTime = daoTime;
     }
+
+    public void setKey(String key) {
+        Key = key;
+    }
+
+    public String getKey() {
+        return Key;
+    }
+
+
 
 
 }

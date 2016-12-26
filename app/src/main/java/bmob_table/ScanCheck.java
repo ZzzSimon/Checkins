@@ -3,15 +3,15 @@ package bmob_table;
 import cn.bmob.v3.BmobObject;
 
 /**
- * Created by Administrator on 2016/10/27.
+ * Created by Administrator on 2016/11/1.
  */
-public class Leave_table extends BmobObject {
-    private String id ;
+public class ScanCheck extends BmobObject {
+    private String id;
     private String account;
     private String realName;
-    private String LeaveTime;
-    private String LeaveType;
+    private String MAC;
     private String BSSID;
+    private String DaoTime;
     private String Key;
 
     public String getId() {
@@ -38,17 +38,14 @@ public class Leave_table extends BmobObject {
         this.realName = realName;
     }
 
-    public String getLeaveTime() {
-        return LeaveTime;
+
+    public String getMAC() {
+        return MAC;
     }
 
-    public void setLeaveTime(String leaveTime) {LeaveTime = leaveTime;}
-
-    public String getLeaveType() {
-        return LeaveType;
+    public void setMAC(String MAC) {
+        this.MAC = MAC;
     }
-
-    public void setLeaveType(String leaveType) {LeaveType = leaveType;}
 
     public String getBSSID() {
         return BSSID;
@@ -56,6 +53,14 @@ public class Leave_table extends BmobObject {
 
     public void setBSSID(String BSSID) {
         this.BSSID = BSSID;
+    }
+
+    public String getDaoTime() {
+        return DaoTime;
+    }
+
+    public void setDaoTime(String daoTime) {
+        DaoTime = daoTime;
     }
 
     public void setKey(String key) {

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.b140414.njupt.checkins.ScanActivity"
+    android:background="@drawable/background">
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:id="@+id/listView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="刷新"
+        android:id="@+id/button3"
+        android:onClick="netScan"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:background="@drawable/circle"
+        android:layout_below="@+id/listView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="请选择一个wifi"
+        android:id="@+id/textView_choice"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_below="@+id/Wifi_name"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="签到"
+        android:id="@+id/Scan_check"
+        android:onClick="Scan_Dao"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:background="@drawable/circle"
+        android:layout_alignTop="@+id/button_scaninfo"
+        android:layout_toStartOf="@+id/Wifi_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/Wifi_name"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="签退并退出"
+        android:id="@+id/button_scanquit"
+        android:onClick="Scanquit"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:background="@drawable/circle"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="本人记录"
+        android:id="@+id/button_scaninfo"
+        android:onClick="Info_ScanDao"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:background="@drawable/circle"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/textView_choice"
+        android:layout_alignStart="@+id/Wifi_name" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_s_key"
+        android:background="@drawable/abc_textfield_search_material"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="签到口令"
+        android:id="@+id/textView7"
+        android:textSize="20dp"
+        android:textColor="@color/abc_primary_text_disable_only_material_dark"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+</RelativeLayout>

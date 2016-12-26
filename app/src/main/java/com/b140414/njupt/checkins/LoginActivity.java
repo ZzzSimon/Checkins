@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import bmob_table.User;
 import java.util.List;
@@ -12,12 +14,14 @@ import java.util.List;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
-import service.WifiCheck_ch;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText account_et;
     private EditText password_et;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton_s,radioButton_t;
+    private String userType = "s";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +30,30 @@ public class LoginActivity extends AppCompatActivity {
 
         account_et=(EditText)findViewById(R.id.account_et);
         password_et=(EditText)findViewById(R.id.password_et);
+        radioGroup = (RadioGroup)findViewById(R.id.RadioGroup_type);
+        radioButton_s = (RadioButton)findViewById(R.id.radioButton_s);
+        radioButton_t = (RadioButton)findViewById(R.id.radioButton_t);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == radioButton_t.getId()){
+                    userType = "t";
+                }
+                else {
+                    if (checkedId == radioButton_s.getId()) {
+                        userType = "s";
+                    }
+                    else {
+
+                    }
+                }
+
+
+            }
+        });
     }
+
+
 
     //登录按钮响应事件
     public void login_btn(View view){
@@ -55,12 +82,26 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         else{
-                            Intent intent =new Intent();
-                            intent.setClass(LoginActivity.this,MainActivity.class);
-                            intent.putExtra("account",account);
-                            intent.putExtra("realName",a.getRealName());
+                            if(userType.equals("t")) {
+                                Intent intent = new Intent();
+                                intent.setClass(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("account", account);
+                                intent.putExtra("realName", a.getRealName());
 
-                            startActivity(intent);
+                                startActivity(intent);
+                            }
+                            else {
+                                if(userType.equals("s")){
+                                    Intent intent = new Intent();
+                                    intent.setClass(LoginActivity.this, ScanActivity.class);
+                                    intent.putExtra("account", account);
+                                    intent.putExtra("realName", a.getRealName());
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Toast.makeText(LoginActivity.this, "请选择正确的用户类型", Toast.LENGTH_LONG).show();
+                                }
+                            }
                         }
                     }
 
