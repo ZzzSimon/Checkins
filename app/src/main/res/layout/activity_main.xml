@@ -29,9 +29,9 @@
         android:textSize="15dp"
         android:onClick="Quit"
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
-        android:layout_marginBottom="47dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/relativeLayout3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,9 +48,9 @@
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:id="@+id/relativeLayout3"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textView_BSSID"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="135dp">
+        android:layout_marginTop="26dp">
 
         <Button
             android:layout_width="100dp"
@@ -61,7 +61,7 @@
             android:textSize="15dp"
             android:onClick="LiChang"
             android:textColor="@color/abc_primary_text_disable_only_material_dark"
-            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@+id/button_call"
             android:layout_alignParentEnd="true" />
 
         <Button
@@ -80,11 +80,10 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/editText_key"
-            android:background="@drawable/abc_textfield_search_material"
+            android:background="@android:drawable/button_onoff_indicator_off"
             android:textColor="@color/abc_primary_text_disable_only_material_dark"
             android:layout_below="@+id/textView6"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp" />
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,7 +110,8 @@
         android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:id="@+id/listView2"
-        android:layout_below="@+id/hello" />
+        android:layout_below="@+id/hello"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -121,19 +121,20 @@
         android:onClick="netScan_t"
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:background="@drawable/circle"
-        android:layout_below="@+id/listView2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+        android:layout_alignBaseline="@+id/hello"
+        android:layout_alignBottom="@+id/hello"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="请选择一个wifi"
+        android:text="选择一个wifi->输入签到口令->点名/离场信息"
         android:id="@+id/textView_BSSID"
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignEnd="@+id/listView2" />
+        android:textSize="20px"
+        android:layout_below="@+id/listView2"
+        android:layout_alignStart="@+id/relativeLayout3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -141,8 +142,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/textView_SSID"
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
-        android:layout_above="@+id/textView_BSSID"
-        android:layout_toEndOf="@+id/relativeLayout3"
-        android:layout_marginStart="11dp" />
+        android:layout_below="@+id/textView_BSSID"
+        android:layout_alignStart="@+id/textView_BSSID" />
 
 </RelativeLayout>

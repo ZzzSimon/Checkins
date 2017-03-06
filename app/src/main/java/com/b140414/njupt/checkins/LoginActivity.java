@@ -34,19 +34,19 @@ public class LoginActivity extends AppCompatActivity {
         radioButton_s = (RadioButton)findViewById(R.id.radioButton_s);
         radioButton_t = (RadioButton)findViewById(R.id.radioButton_t);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == radioButton_t.getId()){
-                    userType = "t";
-                }
-                else {
-                    if (checkedId == radioButton_s.getId()) {
-                        userType = "s";
-                    }
-                    else {
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        if(checkedId == radioButton_t.getId()){
+                            userType = "t";
+                        }
+                        else {
+                            if (checkedId == radioButton_s.getId()) {
+                                userType = "s";
+                            }
+                            else {
 
-                    }
-                }
+                            }
+                        }
 
 
             }

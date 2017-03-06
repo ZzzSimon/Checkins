@@ -47,7 +47,7 @@
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:background="@drawable/circle"
         android:layout_alignTop="@+id/button_scaninfo"
-        android:layout_toStartOf="@+id/Wifi_name" />
+        android:layout_alignStart="@+id/button3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,8 +67,9 @@
         android:onClick="Scanquit"
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:background="@drawable/circle"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/Scan_check"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" />
 
     <Button
         android:layout_width="100dp"
@@ -78,15 +79,15 @@
         android:onClick="Info_ScanDao"
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:background="@drawable/circle"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="32dp"
         android:layout_below="@+id/textView_choice"
-        android:layout_alignStart="@+id/Wifi_name" />
+        android:layout_toEndOf="@+id/Scan_check" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/editText_s_key"
-        android:background="@drawable/abc_textfield_search_material"
+        android:background="@drawable/bmob_update_button_cancel_bg_normal"
         android:textColor="@color/abc_primary_text_disable_only_material_dark"
         android:layout_below="@+id/textView7"
         android:layout_centerHorizontal="true" />

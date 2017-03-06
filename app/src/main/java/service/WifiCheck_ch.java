@@ -51,8 +51,8 @@ public class WifiCheck_ch extends Service {
             public void ScanCheck(){
                 //实例化一个通知
             Context context = getApplicationContext();
-            final NotificationManager notificationManager = (NotificationManager) context
-                    .getSystemService(NOTIFICATION_SERVICE);
+            final NotificationManager notificationManager = (NotificationManager) context.
+                    getSystemService(NOTIFICATION_SERVICE);
             Intent notificationIntent = new Intent();
             PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
                     notificationIntent, 0);

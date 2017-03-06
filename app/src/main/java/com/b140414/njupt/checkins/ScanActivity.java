@@ -204,7 +204,6 @@ public class ScanActivity extends AppCompatActivity {
                 new String[] { "SSID", "BSSID" },
                 new int[] { R.id.SSID,R.id.BSSID });
 
-
         listView.setAdapter(adapter);
 
     }
