@@ -194,16 +194,14 @@ public class ScanActivity extends AppCompatActivity {
     public void netScan(View v){
         List<Map<String, Object>> list;
         //启动扫描
-                wifiManager.startScan();
-
+        wifiManager.startScan();
         //获取扫描结果
         list = getListForSimpleAdapter();
-
-        SimpleAdapter     adapter = new SimpleAdapter(this, list,
+        //填充ListView
+        SimpleAdapter adapter = new SimpleAdapter(this, list,
                 R.layout.wifiinfo,
                 new String[] { "SSID", "BSSID" },
                 new int[] { R.id.SSID,R.id.BSSID });
-
         listView.setAdapter(adapter);
 
     }
@@ -211,10 +209,9 @@ public class ScanActivity extends AppCompatActivity {
     private List<Map<String, Object>> getListForSimpleAdapter() {
         List<ScanResult> mData= wifiManager.getScanResults();
         List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
-
         for (ScanResult a : mData) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map = new HashMap<String, Object>();
+            //map = new HashMap<String, Object>();
             map.put("SSID", a.SSID);
             map.put("BSSID", a.BSSID);
 

@@ -1,6 +1,8 @@
 package com.b140414.njupt.checkins;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +24,10 @@ public class LoginActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton radioButton_s,radioButton_t;
     private String userType = "s";
+    private SharedPreferences sp;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         radioGroup = (RadioGroup)findViewById(R.id.RadioGroup_type);
         radioButton_s = (RadioButton)findViewById(R.id.radioButton_s);
         radioButton_t = (RadioButton)findViewById(R.id.radioButton_t);
+
+        sp = this.getSharedPreferences("userInfo",Context.MODE_PRIVATE);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -43,14 +51,14 @@ public class LoginActivity extends AppCompatActivity {
                             if (checkedId == radioButton_s.getId()) {
                                 userType = "s";
                             }
-                            else {
-
-                            }
                         }
-
-
             }
         });
+
+        //记住账号和密码
+        account_et.setText(sp.getString("USER_NAME", ""));
+        password_et.setText(sp.getString("PASSWORD", ""));
+
     }
 
 
@@ -88,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("account", account);
                                 intent.putExtra("realName", a.getRealName());
 
+
                                 startActivity(intent);
                             }
                             else {
@@ -102,6 +111,12 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "请选择正确的用户类型", Toast.LENGTH_LONG).show();
                                 }
                             }
+
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putString("USER_NAME", account);
+                            editor.putString("PASSWORD",password);
+                            editor.apply();
+
                         }
                     }
 
